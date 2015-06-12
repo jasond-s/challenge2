@@ -42,15 +42,15 @@ if (cluster.isMaster) {
 		// Log the cluster instances status.
 
 		cluster.on('online', function(worker) {
-	  		console.log("[worker %s]\t responded to fork PID:%s", worker.id, worker.process.pid);
+	  		console.info("%s [worker %s]\t responded to fork PID:%s", new Date().toISOString(), worker.id, worker.process.pid);
 		});
 
 		cluster.on('listening', function(worker, address) {
-			console.log("[worker %s]\t is now connected to %s:%s", worker.id, address.address, address.port);
+			console.info("%s [worker %s]\t is now connected to %s:%s", new Date().toISOString(), worker.id, address.address, address.port);
 		});
 
 		cluster.on('exit', function(worker, code, signal) {
-			console.log('[worker %s]\t died, restarting', worker.id);
+			console.info('%s [worker %s]\t died, restarting', new Date().toISOString(), worker.id);
 			cluster.fork();
 		});
 	} ());
@@ -89,6 +89,9 @@ if (cluster.isMaster) {
 		// Add the route for the base URL.
 
 		app.get('/', function (req, res) {
+
+			console.log('%s [Req %s]\t [/] Render view: index', new Date().toISOString(), cluster.worker.id);
+
 			res.render('index');
 		});
 
@@ -151,10 +154,14 @@ if (cluster.isMaster) {
 
 		app.get('/feed', function (req, res) {
 
+			console.log('%s [Req %s]\t [/feed/]', new Date().toISOString(), cluster.worker.id);
+
 			rss(req, res);
 		});
 
 		app.get('/feed/:number', function (req, res) {
+
+			console.log('%s [Req %s]\t [/feed/:number] number: %s', new Date().toISOString(), cluster.worker.id, req.params.number);
 
 			rss(req, res);
 		});
@@ -163,8 +170,10 @@ if (cluster.isMaster) {
 		// Start the server.
 
 		var server = app.listen('9123', function() {
+
 			var address = server.address();
-			console.log('[%s %s]\t server started at %s:%s', type, cluster.worker.id, address.address, address.port)
+
+			console.info('%s [%s %s]\t server started at %s:%s', new Date().toISOString(), type, cluster.worker.id, address.address, address.port)
 		});
 
 	} ());
