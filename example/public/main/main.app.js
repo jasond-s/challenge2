@@ -2,7 +2,7 @@
 (function () {
 
 	var LENGTH_OF_LIST = 5;
-	var REFRESH_TIME = 10;
+	var REFRESH_TIME = 1000;
 
 	// The main module declaration for the app.
 
