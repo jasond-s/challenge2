@@ -7,8 +7,8 @@ var cluster = require('cluster'),
 	request = require('request'),
 	xml2js = require('xml2js'),
 	express = require('express'),
-    app = express(),
-    parser = new xml2js.Parser();
+	app = express(),
+	parser = new xml2js.Parser();
 
 var type = process.argv[2];
 var publicRoute = path.join(__dirname, '/' + type + '/public');
@@ -90,32 +90,33 @@ if (cluster.isMaster) {
 
 					// Parse the RSS xml into json for usage.
 
-				    parser.parseString(body, function (err, result) {
+					parser.parseString(body, function (err, result) {
 
-				    	// The number of items we really want to see.
+						// The number of items we really want to see.
 
-				    	var number = req.params.number || result.rss.channel[0].item.length;
+						var number = req.params.number || result.rss.channel[0].item.length;
 
-				    	// Parse the feeed into a nice JSON object.
+						// Parse the feeed into a nice JSON object.
 
-				        var parsedItems = result.rss.channel[0].item.map(function (item, index) {
-				        	if (index > number) return null;
+						var parsedItems = result.rss.channel[0].item.map(function (item, index) {
 
-				        	// Map the rss item to something more useful.
+							if (index > number) return null;
 
-			        		return {
-			        			id: item.link[0],
-		        				title: item.title[0],
-		        				description: item.description[0],
-		        				creator: item['dc:creator'][0],
-		        				createdOn: item.pubDate[0]
-			        		};
-				        }).slice(0, number);
+							// Map the rss item to something more useful.
 
-				        // Send back all of the good stuff.
+							return {
+								id: item.link[0],
+								title: item.title[0],
+								description: item.description[0],
+								creator: item['dc:creator'][0],
+								createdOn: item.pubDate[0]
+							};
+						}).slice(0, number);
 
-				        res.json(parsedItems);
-				    });
+						// Send back all of the good stuff.
+
+						res.json(parsedItems);
+					});
 
 				} else {
 

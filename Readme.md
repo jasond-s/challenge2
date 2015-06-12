@@ -37,6 +37,28 @@
 - Something with Audio elements...
 
 
+
+#Run
+
+To run the src:
+
+- Testing: `npm test`
+	- Tests output to `src/tests/output`
+
+- Run Server: `npm start`
+	- The servce will start on localhost:9123
+
+
+To run the example:
+
+- Testing: `npm run testex`
+	- Tests output to `example/tests/output`
+
+- Run Server: `npm run startex`
+	- The servce will start on localhost:9123
+
+
+
 # Sketches
 
 
