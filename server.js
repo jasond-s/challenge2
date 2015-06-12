@@ -10,8 +10,23 @@ var cluster = require('cluster'),
 	app = express(),
 	parser = new xml2js.Parser();
 
+
+// app globals
+
 var type = process.argv[2];
 var publicRoute = path.join(__dirname, '/' + type + '/public');
+
+// configure environment
+
+if (app.settings.env === 'development') {
+	// Development specific code...
+}
+else if (app.settings.env === 'production') {
+	// Noop for the console log...
+	console.log = function () {};
+}
+
+// app code
 
 if (cluster.isMaster) {
 
@@ -27,11 +42,11 @@ if (cluster.isMaster) {
 		// Log the cluster instances status.
 
 		cluster.on('online', function(worker) {
-		  console.log("[worker %s]\t responded to fork PID:%s", worker.id, worker.process.pid);
+	  		console.log("[worker %s]\t responded to fork PID:%s", worker.id, worker.process.pid);
 		});
 
 		cluster.on('listening', function(worker, address) {
-		  console.log("[worker %s]\t is now connected to %s:%s", worker.id, address.address, address.port);
+			console.log("[worker %s]\t is now connected to %s:%s", worker.id, address.address, address.port);
 		});
 
 		cluster.on('exit', function(worker, code, signal) {
