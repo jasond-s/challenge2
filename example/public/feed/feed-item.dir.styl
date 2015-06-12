@@ -1,0 +1,32 @@
+// --- values
+
+$yellow = #FFD700
+$grey-light = #AAA
+$black = #000
+
+
+// --- feed-item specific styles
+
+.feed-item
+	margin 1%
+	padding 1%
+	border solid 1px $grey-light
+
+	.feed-item-favourite
+		display inline-block
+		vertical-align top
+		background-color $yellow
+		border dashed 2px $yellow
+		width 5%
+		height 30px
+		transition all 0.7s ease
+
+	.feed-item-text
+		display inline-block
+		width 93%
+
+	.feed-item-title
+		color $black
+
+	.feed-item-description
+		color $grey-light

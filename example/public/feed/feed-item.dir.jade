@@ -1,0 +1,5 @@
+.feed-item
+	.feed-item-favourite(ng-click="item.isFavourite = !item.isFavourite" ng-style="{ 'background-color': item.isFavourite ? '#FFD700' : '#FFF' }")
+	.feed-item-text
+		a.feed-item-title(href="{{ item.link }}" target="_blank") {{ item.title }}
+		.feed-item-description {{ item.description }}

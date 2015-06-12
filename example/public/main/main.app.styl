@@ -1,0 +1,61 @@
+// --- values
+
+$yellow-light = #FFFFE0
+$white = #FFF
+$grey = #FAFAFA
+$dark-grey = #F4F4F4
+$dark-grey-shadow = 1px 1px 3px $dark-grey
+
+
+// --- minimal reset
+
+*
+   margin 0
+   padding 0
+
+// --- angular pre-requisites
+
+.ng-cloak
+	display: none !important
+
+
+// --- global styles
+
+html
+	background-color $grey
+
+body
+	text-align center
+
+// centering element
+
+#wrap
+	margin 0 auto
+	padding 10px
+	max-width 800px
+
+
+// --- main content styles
+
+header
+	margin 5px
+	padding 10px
+	background-color $white
+	box-shadow $dark-grey-shadow
+
+ul
+	padding 5px
+	list-style none
+
+#content
+	text-align center
+	margin 5px
+	padding 10px
+	background-color $white
+	box-shadow $dark-grey-shadow
+
+#feedList
+	background-color $grey
+
+#favouriteList
+	background-color $yellow-light

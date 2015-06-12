@@ -1,0 +1,44 @@
+html
+	//- ------------ Head
+	head
+		link(rel="stylesheet" type="text/css" href="/main/main.app.css")
+		link(rel="stylesheet" type="text/css" href="/feed/feed-item.dir.css")
+
+
+	//- ------------ Body
+	body.ng-cloak(ng-app="challenge2" ng-controller="appCtrl as ctrl")
+
+		#wrap
+			//- ------------ Header
+			header
+				h1 {{ ctrl.title }}
+				p {{ ctrl.subtitle }}
+
+			//- ------------ Content
+			#content
+				h2#favouriteTitle Favourites
+				ul#favouriteList
+					li.favourite-item(ng-repeat="fave in favourites")
+						feed-item(item="fave")
+
+				h2#feedTitle Recent Feed
+				ul#feedList
+					li.list-item(ng-repeat="(key, item) in items")
+						feed-item(item="item")
+
+
+	//- ------------ Scripts
+
+	//- ---------------- Vendor
+	script(src="http://code.jquery.com/jquery-2.1.4.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js")
+
+	//- ---------------- Main App and Services
+	script(src="/main/main.app.js")
+	script(src="/main/localStorage.svc.js")
+	script(src="/main/favourites.svc.js")
+
+	//- ---------------- Feed Module
+	script(src="/feed/feed.mod.js")
+	script(src="/feed/feed.svc.js")
+	script(src="/feed/feed-item.dir.js")

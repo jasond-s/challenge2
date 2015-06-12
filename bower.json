@@ -1,0 +1,20 @@
+{
+  "name": "Challenge2",
+  "version": "0.0.0",
+  "authors": [
+    "Jason Dryhurst-Smith <jason@jasonds.co.uk>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "jquery": "~2.1.4",
+    "angular-mocks": "~1.4.0"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Challenge",
+  "version": "1.0.0",
+  "description": "A challenge for front-end devs.",
+  "main": "server.js",
+  "scripts": {
+    "testex": "karma start karma.ex.conf",
+    "startex": "nodemon server.js example",
+    "test": "karma start karma.conf",
+    "start": "nodemon server.js src"
+  },
+  "author": "jason.dryhurst-smith",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^2.3.1",
+    "jasmine-core": "^2.3.4",
+    "jasmine-reporters": "^2.0.6",
+    "jslint": "^0.9.0",
+    "karma": "^0.12.35",
+    "karma-html-reporter": "^0.2.6",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17"
+  },
+  "dependencies": {
+    "jade": "^1.10.0",
+    "connect-jade-static": "^0.2.2",
+    "express": "^4.12.4",
+    "nib": "^1.1.0",
+    "request": "^2.57.0",
+    "stylus": "^0.51.1",
+    "xml2js": "^0.4.9"
+  }
+}

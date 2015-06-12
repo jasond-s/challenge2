@@ -1,0 +1,24 @@
+.feed-item {
+  margin: 1%;
+  padding: 1%;
+  border: solid 1px #aaa;
+}
+.feed-item .feed-item-favourite {
+  display: inline-block;
+  vertical-align: top;
+  background-color: #ffd700;
+  border: dashed 2px #ffd700;
+  width: 5%;
+  height: 30px;
+  transition: all 0.7s ease;
+}
+.feed-item .feed-item-text {
+  display: inline-block;
+  width: 93%;
+}
+.feed-item .feed-item-title {
+  color: #000;
+}
+.feed-item .feed-item-description {
+  color: #aaa;
+}
