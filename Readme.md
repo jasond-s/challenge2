@@ -17,24 +17,24 @@
 
 ## Story
 
-Create an app for viewing one or more rss feeds.
+- Create an app for viewing one or more rss feeds.
 	- HTTP and the like for retrieval.
 
-You should be able to see the updates to the feed live, as and when they happen.
+- You should be able to see the updates to the feed live, as and when they happen.
 	- Rx observables for the feed for bonus points.
 
-You should be able to mark items from the feed as favourites.
+- You should be able to mark items from the feed as favourites.
 	- Some bit of fancy pants UI.
 
-Favourites should be cacheable for viewing later, must be viewable when the browser refreshes.
+- Favourites should be cacheable for viewing later, must be viewable when the browser refreshes.
 	- I would suggest using localstorage (or a database).
 
-Whenever a user clicks on an item for details. This must be recorded...
+- Whenever a user clicks on an item for details. This must be recorded...
 	- Over time stats should be generated for the user actions.
 	- This could be done using a WebWorker.
 
-Something with file Blobs...
-Something with Audio elements...
+- Something with file Blobs...
+- Something with Audio elements...
 
 
 # Sketches
