@@ -43,7 +43,7 @@
 					.success(function (data) {
 						if (data instanceof Array && data[0]) {
 
-							// Is the new item to the hashSetionary?
+							// Is the new item to the hashSet?
 							if (!hashSet[data[0].id]) {
 
 								// Populate the hashSet for the items from the feed.
