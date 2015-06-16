@@ -13,9 +13,14 @@ var cluster = require('cluster'),
 
 // app globals
 
-var type = process.argv[2];
-var publicRoute = path.join(__dirname, '/' + type + '/app/public');
-var viewRoute = path.join(__dirname, type + '/app/views');
+var APP_TYPE = process.argv[2];
+
+var PUBLIC_ROUTE = path.join(__dirname, '/' + APP_TYPE + '/app/public');
+
+var VIEW_ROUTE = path.join(__dirname, APP_TYPE + '/app/views');
+
+var noop = function () {};
+
 
 // configure environment
 
@@ -24,8 +29,9 @@ if (app.settings.env === 'development') {
 }
 else if (app.settings.env === 'production') {
 	// Noop for the console log...
-	console.log = function () {};
+	console.log = noop;
 }
+
 
 // app code
 
@@ -63,14 +69,14 @@ if (cluster.isMaster) {
 		// Add our middleware.
 
 		app.use(jadeStatic({
-			baseDir: publicRoute,
+			baseDir: PUBLIC_ROUTE,
 			baseUrl: '/',
 			maxAge: 86400,
 			jade: { pretty: true }
 		}));
 
 		app.use(stylus.middleware({
-			src: publicRoute,
+			src: PUBLIC_ROUTE,
 			compile: function (str, path) {
 				return stylus(str).set('filename', path).use(nib())
 			}
@@ -79,13 +85,13 @@ if (cluster.isMaster) {
 
 		// Use express to serve our static as well.
 
-		app.use(express.static(publicRoute));
+		app.use(express.static(PUBLIC_ROUTE));
 
 		// View setup.
 
 		app.set('view engine', 'jade');
 
-		app.set('views', viewRoute);
+		app.set('views', VIEW_ROUTE);
 
 		// Add the route for the base URL.
 
@@ -174,7 +180,7 @@ if (cluster.isMaster) {
 
 			var address = server.address();
 
-			console.info('%s [%s %s]\t server started at %s:%s', new Date().toISOString(), type, cluster.worker.id, address.address, address.port)
+			console.info('%s [%s %s]\t server started at %s:%s', new Date().toISOString(), APP_TYPE, cluster.worker.id, address.address, address.port)
 		});
 
 	} ());
