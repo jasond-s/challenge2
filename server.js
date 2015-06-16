@@ -14,7 +14,8 @@ var cluster = require('cluster'),
 // app globals
 
 var type = process.argv[2];
-var publicRoute = path.join(__dirname, '/' + type + '/public');
+var publicRoute = path.join(__dirname, '/' + type + '/app/public');
+var viewRoute = path.join(__dirname, type + '/app/views');
 
 // configure environment
 
@@ -84,7 +85,7 @@ if (cluster.isMaster) {
 
 		app.set('view engine', 'jade');
 
-		app.set('views', path.join(__dirname, type + '/views'));
+		app.set('views', viewRoute);
 
 		// Add the route for the base URL.
 
@@ -169,7 +170,7 @@ if (cluster.isMaster) {
 
 		// Start the server.
 
-		var server = app.listen('9123', function() {
+		var server = app.listen('9555', function() {
 
 			var address = server.address();
 
