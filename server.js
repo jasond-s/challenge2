@@ -159,14 +159,14 @@ if (cluster.isMaster) {
 
 		// Add the route for the feed that we will be choping up.
 
-		app.get('/feed', function (req, res) {
+		app.get('/api/feed/', function (req, res) {
 
 			console.log('%s [Req %s]\t [/feed/]', new Date().toISOString(), cluster.worker.id);
 
 			rss(req, res);
 		});
 
-		app.get('/feed/:number', function (req, res) {
+		app.get('/api/feed/:number', function (req, res) {
 
 			console.log('%s [Req %s]\t [/feed/:number] number: %s', new Date().toISOString(), cluster.worker.id, req.params.number);
 

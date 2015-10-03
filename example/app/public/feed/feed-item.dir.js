@@ -6,7 +6,7 @@
     	.module('feed')
     	.directive('feedItem', ['favouritesService', function (favouritesService) {
 
-            var templateUrl = '/Feed/feed-item.dir.html';
+            var templateUrl = '/feed/feed-item.dir.html';
 
             return {
                 restrict: "E",

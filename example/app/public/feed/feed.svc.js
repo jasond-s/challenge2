@@ -1,7 +1,7 @@
 (function () {
 
 	// A service for retrieving items from a feed.
-	var FEED_URL = /feed/
+	var FEED_URL = '/api/feed/';
 
 	angular
 		.module('feed')
